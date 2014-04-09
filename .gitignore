@@ -1,0 +1,13 @@
+*~
+*.aux
+*.toc
+*.idx
+*.log
+*.out
+test*
+*.DS_Store
+*\#*
+*.pyg
+index.synctex*
+*.pdf
+index.pdf
