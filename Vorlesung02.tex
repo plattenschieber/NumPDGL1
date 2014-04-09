@@ -1,0 +1,100 @@
+\section{Klassifizierung linearer PDEs 2.Ordnung im $\R^2$}
+Betrachte auf $\Omega\subset\R^2$ Gebiet 
+\begin{equation} %1.2.1
+    L[u] := A u_{xxx} + Bu_{xy} + Cu_{yy} + E_1 u_x + E_2 u_y + E_3 u = F
+    \label{eq:quasilin}
+\end{equation}
+
+(z.B. Laplace mit $A=B=-1$)%anmerkung
+gesucht $u=u(x,y)=u(x_1,x_2), L:C^2(\Omega)\to C^0(\Omega) $
+(Wenn wir zwei mal stetig diff'bare Funktionen zwei mal Ableiten sollten wir in $C^0$ landen)
+
+Gegeben: $A,B,C,E_i\in C^1(\Omega)$ Koeffizientenfunktionen (können von $x,y,u_x,u_y,u$ abhängen).
+\eqref{eq:quasilin} heißt: 
+
+\begin{itemize}
+        \item quasilinear, wenn $L$ linear in den höchsten Ableitungen ist
+        \item linear, falls $A,B,C$ nur von $x,y$ abhängen und in
+            \begin{equation} %1.2.1a
+                E:= E_1 u_x + E_2 u_y + E_3 u - F
+            \end{equation}
+            die $E_i$ auch nur von $x,y,$ abhängen
+        \item linear mit konstanten Koeffizienten, falls $A,B,C,E$ konstant
+        \item homogen, falls $F\equiv 0$
+\end{itemize}
+
+Der Term $Au_{xx} + Bu_{xy} + Cu_{yy}$ heißt Hauptteil der PDE. \\
+
+Annahme: $A,B,C$ nicht gleichzeitg identisch $0$ sind (Funktionen!) auf $\Omega$
+\underline{Frage} Existenz und Eindeutigkeit von (lokalen) Lösungen von \eqref{eq:quasilin} unter Vorgabe von \underline{Anfangswerten} auf einer Kurve $\Cc$? 
+
+
+\underline{Grundidee}
+$\Cc \subset y$-Achse (Bild 1)
+\begin{equation} %1.2.2
+    u(0,y) = f(y), \quad y\in[a,b] \text{ mit } f\in C^{\infty}(\Omega) \text{ gegeben.}
+    \label{}
+\end{equation}
+$\to$ dann auch $\frac{\partial}{\partial y} u(0,y), \frac{\partial^2}{\partial y^2} u(0,y),\cdots \quad y\in [a,b]$ bekannt.\\
+Ist nun zudem bekannt: 
+\[
+    \left( \frac{\partial}{\partial x} u \right) (0,y) = g(y), \quad y\in [a,b], g\in C^{\infty}(\Omega) \text{ geg.}
+\]
+dann lassen sich auch 
+\[
+    \left( \frac{\partial^2}{\partial x \partial y} u\right)(0,y), 
+    \left( \frac{\partial^3}{\partial y^2 \partial x} u \right)u(0,y), \cdots
+\]
+bestimmen.\\
+
+Falls $A(0,y) \neq 0 \forall y\in \Cc$ (relativ starke Forderung an alle Punkte, jedoch beim Standardbsp. Laplace erfüllt  $A=-1$ überall diese Bedingung) liefert \eqref{eq:quasilin} $u_{xx}(0,y):$
+\[
+    \underset{\neq 0}{A(0,y)} \underset{?}{u_{xx}(0,y)} + B(0,y) \underset{bekannt}{u_{xy}(0,y)} + C(0,y) \underset{bekannt}{u_{yy}(0,y)} + \underset{bekannt}{E(0,y)} = 0
+\]
+
+Differentiation von \eqref{eq:quasilin} nach $x$ liefert $\frac{\partial^3}{\partial x^3}u(0,y)$, etc. (rekursive bestimmung der Ableitungen - wir haben $u$ hiermit immer noch nicht berechnet!!)
+
+Fazit: Ist $u$ und $u_x$ auf $C$ bekannt $\Rightarrow$ auf der Kurve $C$ lassen sich alle partiellen Ableitungen von $u$ berechnen.
+
+Mit Taylorentwicklung erhalten wir als Lösung 
+\begin{equation} %1.2.4
+    u(x,y) = u(0,y) + x \left( \frac{\partial u}{\partial x} \right)(0,y) + \frac{x^2}{2} \left( \frac{\partial^2 u}{\partial x^2} \right) (0,y) + \cdots
+    \label{eq:taylor}
+\end{equation}
+(Diese Entwicklung konvergiert nicht notwendigerweise! - nur wenn sie konvergiert erhalten wir auch eine Lösung)
+falls \underline{Konvergenz} der Taylorreihe sichergestellt werden kann.
+
+\begin{satz}[Cauchy-Kowalewskaya (Speziellfall $\Cc\subset y$-Achse)]
+    Falls $\frac{B}{A}, \frac{C}{A}, \frac{E}{A}, f, g$ in einer Umgebung von $\Cc$ (reell) analytisch sind,  \underline{dann} konvergiert die Taylorreihe \eqref{eq:taylor}
+\end{satz}
+
+Nach Konstruktion ist dann \eqref{eq:quasilin} mit Anfangsbedingung (1.22) $u(0,y) = f(y)$, (1.2.3) $u_x(0,y) = g(y), y\in\Cc$ \underline{eindeutig lösbar} (lokal).
+
+Allgemein: Man untersucht die Lösbarkeit von \eqref{eq:quasilin} unter Vorgabe allgemeiner Anfangswerte auf beliebiger Kurve $\Cc\subset \R^2$ (Bild2) 
+
+Gegeben seien Anfangswerte: 
+\begin{equation}[Cauchy-Daten] % als Kästchen dran
+    u|_\Cc = f \\
+    \underbrace{\frac{\partial u}{ \partial \nu}}_{\nu \nabla u (\nu \text{ innere Normale})} \big|_\Cc = g
+\end{equation}
+
+Da mit $u$ auch Ableitungen von $u$ entlang der Kurve $\Cc$ bekannt sind, kann man (versuchen erneut die Ableitungen zu bestimmen)  $p:= \frac{\partial}{ \partial x} u, q:=\frac{\partial}{\partial y} u$ auf $\Cc$ bestimmen, denn:\\
+
+\[
+    \frac{\partial u}{\partial \nu} = \nu \cdot \nabla u, \frac{\partial u}{\partial \tau} = \tau \cdot \nabla u (\tau,\nu \text{ bekannt})
+\]
+
+$\to$ 2 Gleichungen für 2 Unbekannte $u_x (=p), u_y(=q)$\\
+
+\underline{Frage}: Unter welchen Bedingungen legt dies zusammen mit PDE \eqref{eq:quasilin} alle Ableitungen 2.Ordnung 
+\begin{equation} %1.2.6
+    r:=\frac{\partial^2 u}{\partial x^2}, s:= \frac{\partial^2 u}{\partial x\partial y}, t:=\frac{\partial^2 u}{\partial y^2}
+    \label{}
+\end{equation}
+fest?\\
+
+Dazu: Sei $\Cc = \left\{ (x(l), y(l)): l\in [0,T] \right\}$ natürliche Parametrisierung
+\[
+    \Rightarrow \frac{dP}{dl} = \frac{\partial P}{\partial x} \frac{\partial x}{\partial l} + \frac{\partial P}{\partial y} \frac{\partial y}{\partial l} = r \frac{dx}{dl} + s \frac{dy}{dl}\\
+    \frac{dq}{dl} = \cdots = s \frac{dx}{dl} + \frac{dy}{dl}
+\]
