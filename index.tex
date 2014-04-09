@@ -1,0 +1,97 @@
+\input{skriptheader}
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=true,      % page fit to window when opened
+    pdftitle={Numerik PDG I},    % title
+    pdfauthor={Jeronim Morina},     % author
+    pdfsubject={Skript zur Vorlesung im SS 2014},   % subject of the document
+    pdfnewwindow=true,      % links in new window
+    pdfkeywords={},         % list of keywords
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\makeindex
+\begin{document}
+\begin{titlepage}
+\vspace*{\stretch{1}}
+\flushright{\Huge\bfseries Numerik partieller Differentialgleichungen I}
+\noindent\rule[-1ex]{\textwidth}{4pt}\\[5pt]
+\Large Vorlesungsskript SS 2014 \\[3cm]
+{\Large \bf Vorlesungsmitschrift von Jeronim Morina}\\[5mm]
+\hfill \textnormal{\date{}}
+\vspace{\stretch{1}}
+\end{titlepage}
+
+\cleardoublepage
+\thispagestyle{empty}
+\pagenumbering{roman} \setcounter{page}{1}
+
+\tableofcontents
+
+\chapter*{Vorwort}
+Dieses Dokument enthält die Mitschrift von Jeronim Morina zur Vorlesung ``Numerik partieller Differentialgleichungen I'' im Somersemester 2014 bei Professor Kunoth. Wir können dem Leser weder Vollständigkeit noch Fehlerfreiheit (von dieser sind wir überzeugt, dass sie definitiv nicht gegeben ist) versprechen. Wir sind jedoch für Verbesserungsvorschläge dankbar, diese können an \href{mailto:morina@jeronim.de}{morina@jeronim.de} geschickt werden.\\
+
+
+\hfill Köln, \today
+
+\chapter{Einleitung}
+\section{Motivation, Themen dieser Vorlesung}
+Thematik: Dynamische Prozesse aus den Natur-, Ingenieur-, Betriebs- und Sozialwissenschaften
+\underline{Methodik:} 
+\begin{enumerate}[I.]
+        \item Mathematisch-physikalisches Modell: Abbildung Realität $\rightarrow$ Modell
+        \item Theorie: Wohlgestelltheit des Problems: Existenz, Eindeutigkeit einer Lösung, stetige Abhängigkeit von Daten
+        \item Numerik/Numerische Simulation: Berechnung einer approximativen Lösung mittels \underline{effizienter Algorithmen}
+        \item Visualisierung der Ergebnisse
+        \item Validierung der Ergebnisse mittels Realdaten, ggf. zurück zu I. und Nachbesserung des Modells (Z.B. konstante Volatiliät des Black Scholes Modells genügt der Realität nicht. Eine Anpassung des Modells in I. ist daher notwendig um ``sinnvolle'' Ergebnisse zu erhalten)
+\end{enumerate}
+
+In dieser Vorlesung: (und WissRech III-IV)
+Betrachtung von Prozessen, die durch partielle Differentialgleichungen (partiel differential equations, PDE) beschrieben werden.
+Stärker als bei (gewöhnlichen Differentialgleichungen) ODEs ist die Verzahnung von Modellierung, Theorie und Numerik
+
+Ziel des \underline{Lösens einer PDE}: Bestimmung einer Funktion $u=u(x,y), (x,t)\in \R^3\times\R$ (mit $x$ Ort und $t$ Zeit, im Unterschied zu ODEs $y=y(t)$) aus Gleichungen, die partielle Ableitung von $u$ nach $x,t$ beinhalten. 
+
+\cleardoublepage
+\pagenumbering{arabic} \setcounter{page}{1}
+
+\input{Vorlesung01}
+ %\input{Vorlesung02}
+ %\input{Vorlesung03}
+ %\input{Vorlesung04}
+ %\input{Vorlesung05}
+ %\input{Vorlesung06}
+ %\input{Vorlesung07}
+ %\input{Vorlesung08}
+ %\input{Vorlesung09}
+ %\input{Vorlesung09}
+ %\input{Vorlesung10}
+ %\input{Vorlesung11}
+ %\input{Vorlesung12}
+ %\input{Vorlesung13}
+%\input{Vorlesung14}
+%\input{Vorlesung15}
+%\input{Vorlesung16}
+%\input{Vorlesung17}
+%\input{Vorlesung18}
+%\input{Vorlesung19}
+%\input{Vorlesung20}
+%\input{Vorlesung21}
+%\input{Vorlesung22}
+%\input{Vorlesung23}
+%\input{Vorlesung24}
+%\input{Vorlesung25}
+%\input{Vorlesung26}
+%\input{Vorlesung27}
+%\input{Vorlesung28}
+%\input{Vorlesung29}
+
+\printindex
+\end{document}
+
