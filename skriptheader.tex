@@ -1,0 +1,179 @@
+\documentclass[12pt]{scrbook}
+
+\usepackage{geometry}
+\geometry{a4paper,left=2.5cm,right=2.5cm, top=2cm, bottom=3cm, marginpar=2cm} 
+
+%% Sonderzeichen
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts,stmaryrd,mathtools,amsthm,esint}
+\usepackage{algpseudocode}
+\usepackage{dsfont} % bb für Zahlen
+%\usepackage{MnSymbol} %adobe minion font
+
+%% minted
+%\usepackage{minted}
+%\newminted{cpp}{linenos}
+
+%\usepackage{marginnote}
+%\renewcommand*{\marginfont}{\footnotesize} 
+
+\usepackage{graphicx}
+%\graphicspath{{Bilder/}}
+%\usepackage{tikz}
+%\usepackage[all]{xy}
+%\usetikzlibrary{arrows,calc,shadows,patterns,through,backgrounds}
+%\pgfdeclarepatternformonly{mynwlines}{%
+%\pgfqpoint{-1pt}{-1pt}}{\pgfqpoint{8pt}{8pt}}{\pgfqpoint{6pt}{6pt}}%
+%{
+%  \pgfsetlinewidth{0.4pt}
+%  \pgfpathmoveto{\pgfqpoint{0pt}{3pt}}
+%  \pgfpathlineto{\pgfqpoint{6.1pt}{-3.1pt}}
+%  \pgfusepath{stroke}
+%}
+
+\usepackage{hyperref}
+\usepackage{makeidx}
+\usepackage{listings}
+\usepackage{enumerate}
+
+%% Counters
+%\renewcommand\theequation{\thesection.\arabic{equation}}
+%\AtBeginSection[]{ \setcounter{section}{0} }
+\numberwithin{equation}{section}
+
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand\K{\mathbb{K}}
+\renewcommand{\c}[1]{\mathcal{#1}} % beliebiger Buchstabe kann mit \op in cal geschrieben werden 
+\renewcommand\P{\mathcal{P}} % tolles P, anstatt eines Zeilenumbruchzeichens 
+\newcommand\Ac{\mathcal{A}}
+\newcommand\Pc{\mathcal{P}}
+\newcommand\Lc{\mathcal{L}}
+\newcommand\Kc{\mathcal{K}}
+\newcommand\Mc{\mathcal{M}}
+\newcommand\Tc{\mathcal{T}}
+\newcommand\LC{\mathcal{L}}
+\newcommand\ii{\mathrm{i}} % schlichtes i, ungeschwungen
+\newcommand{\ud}{\,\textnormal{d}} % aufrechtes d fürs Integral
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+%\def\default{}
+\renewcommand{\emph}[2][\default]{\ifx#1\default\textbf{#2}\index{#2}\else\textbf{#2}\index{#1}\fi}
+%\newcommand{\ocirc}{\, \raisebox{1pt}{\footnotesize\textcircled{$\circ $}}\,}
+%\newcommand{\ostar}{\, \raisebox{1pt}{\footnotesize\textcircled{$*$}}\,}
+
+\newcommand{\bs}[1]{\boldsymbol{#1}} % fett gedruckt
+\newcommand{\entspr}{\mathop{\widehat{=}}} % entspricht Zeichen
+\newcommand{\eps}{\varepsilon} % schönes epsilon 
+\def\pre{\textnormal{pre}}
+\def\suc{\textnormal{suc}}
+
+% coole Abkürzungen für die Norm und Doppelnorm
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\znorm}[1]{|\!|\!|#1|\!|\!|}
+
+% ein paar Befehle in Normalschrift, statt kursiv
+\newcommand\dist{\textnormal{dist}}
+\newcommand\im{\textnormal{Im}\,}
+\newcommand\re{\textnormal{Re}\,}
+\newcommand\ran{\textnormal{Ran}\,}
+\renewcommand\ker{\textnormal{Ker}\,}
+\newcommand\range{\textnormal{range}\,}
+\newcommand\var{\textnormal{Var}}
+\newcommand\cov{\textnormal{Cov}}
+\newcommand\ggt{\textnormal{ggT}}
+\newcommand\periode{\textnormal{Periode}}
+\newcommand{\trace}{\textnormal{trace}\,}
+\newcommand{\sign}{\textnormal{sign}\,}
+\newcommand{\cond}{\textnormal{cond}}
+\newcommand{\spanf}{\textnormal{span}\,}
+\newcommand{\spann}{\textnormal{span}}
+\newcommand{\grad}{\textnormal{grad}\,}
+\newcommand{\sgn}{\textnormal{sgn}}
+\newcommand{\rd}{\textnormal{rd}}
+\newcommand{\diag}{\textnormal{diag}}
+\newcommand{\blockdiag}{\textnormal{blockdiag}}
+\newcommand{\supp}{\textnormal{supp}}
+\newcommand{\fie}{\varphi}
+\newcommand{\eins}{\mathds{1}}
+\newcommand{\diam}{\mathrm{diam}}
+\newcommand{\const}{\mathrm{const}}
+\newcommand{\divt}{\mathrm{div}}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\inn}{\textnormal{ in }}
+\newcommand{\auf}{\textnormal{ auf }}
+\renewcommand{\i}{\textnormal{i}}
+\def\dtilde{\stackrel{\approx}}
+\def\dabs{\phantom{a}\quad}
+
+
+\newcommand{\tn}{\ensuremath{| \! | \! |}}
+\newcommand{\operateson}{\rcirclearrowright}
+\usepackage{framed,color}                          % Farbe
+\setlength{\fboxsep}{0.2cm}
+\setlength{\fboxrule}{1pt}
+\definecolor{shadecolor}{rgb}{0.91,0.91,1}      % fuer shaded-Umgebungen
+
+\newtheoremstyle{note}% name
+  {1ex}  % Space above
+  {1ex}  % Space below
+  {\sl}  % Body font
+  {}     % Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}  % Thm head font
+  {.}    % Punctuation after thm head
+  {.5em} % Space after thm head: " " = normal interword space;
+         % \newline = linebreak
+  {\thmname{#1}\thmnumber{ #2}\bf\thmnote{(#3)}}     % Thm head spec (can be left empty, meaning `normal')
+
+\newtheoremstyle{remark}% name
+  {1ex}  % Space above
+  {1ex}  % Space below
+  {}     % Body font
+  {}     % Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}  % Thm head font
+  {.}    % Punctuation after thm head
+  {.5em} % Space after thm head: " " = normal interword space;
+         % \newline = linebreak
+  {\thmname{#1}\thmnumber{ #2}\bf\thmnote{(#3)}}     % Thm head spec (can be left empty, meaning `normal')
+
+\theoremstyle{note}
+\newtheorem{amssatz}{Satz}[section]
+\newtheorem{amslemma}[amssatz]{Lemma}
+\newtheorem{amsproblem}[amssatz]{Problem}
+\newtheorem{amsdefi}[amssatz]{Definition}
+\theoremstyle{remark}
+\newtheorem{amsbsp}[amssatz]{Beispiel}
+\newtheorem*{amsbsp*}{Beispiel}
+\newtheorem{amsalgo}[amssatz]{Algorithmus}
+\newtheorem*{amsalgo*}{Algorithmus}
+\newtheorem{amskorollar}[amssatz]{Korollar}
+\newtheorem*{bemerkung*}{Bemerkung}
+\newtheorem{bemerkung}[amssatz]{Bemerkung}
+
+\newenvironment{satz}[1][]{\begin{amssatz}[#1]\begin{shaded}}
+                          {\end{shaded}\end{amssatz}}
+\newenvironment{lemma}[1][]{\begin{amslemma}[#1]\begin{shaded}}
+                           {\end{shaded}\end{amslemma}}
+\newenvironment{problem}[1][]{\begin{amsproblem}[#1]\begin{shaded}}
+                           {\end{shaded}\end{amsproblem}}
+\newenvironment{korollar}[1][]{\begin{amskorollar}[#1]\begin{shaded}}
+                           {\end{shaded}\end{amskorollar}}
+\newenvironment{algorithmus}[1][]{\begin{amsalgo}[#1]\begin{shaded}}
+                                 {\end{shaded}\end{amsalgo}}
+\newenvironment{algorithmus*}[1][]{\begin{amsalgo*}[#1]\begin{shaded}}
+                                 {\end{shaded}\end{amsalgo*}}
+\newenvironment{definition}[1][]{\begin{amsdefi}[#1]\begin{shaded}}
+                                {\end{shaded}\end{amsdefi}}
+\newenvironment{beispiel}[1][]{\begin{amsbsp}[#1]\begin{framed}}
+                               {\end{framed}\end{amsbsp}}
+\newenvironment{beispiel*}[1][]{\begin{amsbsp*}[#1]}
+                               {\end{amsbsp*}}
+
+
+
