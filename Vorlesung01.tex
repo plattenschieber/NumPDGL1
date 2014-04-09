@@ -1,0 +1,67 @@
+\section*{Grundlegende Definitionen}
+Sei $\Omega \subset \R^d$ ein Gebiet (d.h. offen und zusammenhängend), $d\in\N$.
+\begin{eqnarray*}
+     x:=(x_1, \cdots, x_d)^T\in\R^d\\
+     \alpha\in\Z_+^d \text{Multiindex}, |\alpha| := \alpha_1+\cdots+\alpha_d, x^\alpha:=x_1^{\alpha_1} \cdots x_d^{\alpha_d}\\
+    \C^k(\Omega) := \left\{ f:\Omega\to\R: \frac{\partial^{|\alpha|}f}{\partial x^\alpha} \in \C^0(\Omega), \forall |\alpha|\leq k \right\}
+\end{eqnarray*}
+
+\begin{definition}%1.1.1
+    Jede Funktion $u\in\C^k(\Omega)\times\C^l(\R)$, die zu gegebenem 
+     $G: \R^{d+1}\times \R^{d+k \choose d)}\times\R^l \to \R^m$ die Gleichung 
+     $G\left(x,t, \frac{\partial^{|\alpha|}u}{\partial x^\alpha}: |\alpha| \leq k, \frac{\partial^i u}{\partial t^i}, 1\leq i\leq l\right) = 0$(1.1.2) erfüllt, heißt klassische Lösung der durch (1.1.2) gegebenen PDE der Ordnung k im Ort und l in der Zeit.
+\end{definition}
+
+$d+k \choose d$: die Anzahl der Möglichkeiten aller Ableitungen
+
+\begin{itemize}
+    \item ``klassisch'': Lösung wird als genügend glatt vorausgesetzt
+    \item ``partiell'': Differentialgleichung enthält partielle Ableitungen
+    \item $k,l$: Ordnung der PDE bzgl. Ort und Zeit
+\end{itemize}
+
+\begin{beispiel}
+    $\underset{(Raumdim)}{d=2}, \underset{(skalare Gleichung)}{m=1}, \underset{(Ordn. Ort)}{k=1}, \underset{(keine Zeitabl.)}{l=0}$
+    \[
+        G\left( x_1,x_2,u,\frac{\partial u}{\partial x_1}, \frac{\partial u}{\partial x_2} \right) := a(x) \frac{\partial u}{\partial x_1} + b(x) \frac{ \partial u}{\partial x_2} + c(x) u = 0
+    \]
+    Gesucht: $u=u(x_1,x_2), \tilde(u) = \tilde(u)(x_1,x_2,t) = u(x_1,x_2)v(t)$
+\end{beispiel}
+
+Beachte: wie bei ODEs benötigt man Nebenbedingungen, um aus Gesamtlösungsschar für (1.1.2) eine spezielle Lösung \underline{eindeutig} auszuwählen.
+
+\begin*{definition}[Problem ``korekt gestellt'']
+\begin{itemize}
+    \item es gibt eind. Lösung
+    \item Lösung hängt stetig von Nebenbedingungen/Daten ab (Anfangs-, Randbedingungen)
+\end{itemize}
+
+Definition (1.1.1) ist viel zu allgemein für WissRech. Dynamik der am häufigsten auftretenden physikalischen Prozesse aus zwei Klassen: 
+\begin{enumerate}
+    \item[(A)] Diffusion (Wärmeleitung, Black-Scholes-Gleichung)
+    \item[(B)] Transport (Strömungsprobleme)
+\end{enumerate}
+\end{definition}
+Für Numerik zunächst: lineare Prozesse oder linearisierte Prozesse (da nichtlineare PDEs gewöhnlicherweise quadratisch sind und in einem kleinen Gebiet linear approximiert werden können).
+
+Weitere Klassifikationen:
+\begin{enumerate}[(a)]
+    \item irreversible Prozesse (Reaktion, Diffusion, Wärmeleitung)
+    \item reversible Prozesse (Wellen)
+    \item stationäre Prozesse (Variationsprobleme, Statik [Beispiel Stadion])
+\end{enumerate}
+
+Faustregel für mathematiche Sichtweise:
+\begin{enumerate}[(a) $\to$]
+    \item parabolische PDEs
+    \item hyperbolische PDEs
+    \item elliptische PDEs
+\end{enumerate}
+
+Wichtig für WissRech: Prozesstyp entscheidet \underline{Wahl} der Diskretisierungsmethode zur Entwicklung effizienter Algorithmen zur Berechnung einer approximativen Lösung.
+Prinzipiell möglich: Differenzenverfahren (auf uniformen Gitter)
+Probleme dabei: 
+\begin{itemize}
+    \item benötigt hohe Regularität der Lösung (Taylorentwicklung)
+        \item of nicht physikalisch sinnvoll, z.B. Transportprobleme $\to$ Finite-Volumen-Verfahren
+\end{itemize}
