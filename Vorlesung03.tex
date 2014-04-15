@@ -1,0 +1,145 @@
+\section*{Recapture of 1.2 Classification of linear PDEs of 2nd order in $\R^2$}
+
+On $\Omega\subset\R^2$
+\begin{equation*}%1.2.1
+    L[u] := \underbrace{Au_{xx} + Bu_{xy} + Cu_{yy}}_{\text{principal part of PDE}} + \cdots = F
+    \label{}
+\end{equation*}
+assumption: not all of $A,B,C \equiv 0$
+
+Existence and uniqueness of solutions of (local) solutions, provided that initial values on curve $\Cc\subset\bar{\Omega}$ are given.\\
+$\Cc$ a general curve, given Cauchy data 
+\begin{eqnarray}
+    u\big|_\Cc = f\\
+    \frac{\partial u}{\partial \nu} \big|_\Cc = g
+    \label{}
+\end{eqnarray}
+
+$\tau, \nu$ linearly independent $\Rightarrow$ computation of $\nabla u = \begin{pmatrix} u_x\\ u_y\end{pmatrix}$ is possible at any point on $\Cc$.
+
+\underline{Frage:} unter welchen Bedingungen legt dies zusammen mit \ref{1.2.1} alle Ableitungen 2. Ordnung 
+\begin{equation} %(1.2.6)
+    r:=u_{xx}, s:=u_{xy}, t:=u_{yy}
+    
+    \label{}
+\end{equation}
+Dazu sei $\Cc = \left\{ \left( x(l), y(l) \right): l\in [0,T] \right\}$ natürliche Parametrisierung bezüglich der Bogenlänge L
+\[
+    \underset{p:=u_x\\q:=u_y}{\Rightarrow} \frac{dp}{dl} = \frac{\partial p}{\partial x} \frac{dx}{dl} + \frac{\partial p}{\partial y}\frac{dy}{dl} 
+    = \underset{=u_{xx}}{r} \frac{dx}{dl} + \underset{=u_{xy}} \frac{ dy}{dl}
+\]
+\[
+    \underbrace{\frac{dq}{dl}}_{\text{bekannt}} = \frac{\partial q}{\partial x} \frac{dx}{dl} + \frac{\partial q}{\partial y} \frac{dy}{dl}
+    = s \frac{dx}{dl} + t\frac{dy}{dl}
+\]
+Außerdem müssen $r,s,t$ die PDE \ref{1.2.1} erfüllen $\to$ lineares Gleichungssystem mit 3 Gleichungen für die 3 Unbekannten $r,s,t:$
+
+\begin{eqnarray} %(1.2.7)
+    A+\cdots + Bs + Ct &=&  -E\\
+    \frac{dx}{dl} r + \frac{dy}{dl} s &=& \frac{dp}{dl}\\
+    \frac{dx}{dl} s + \frac{dy}{dl} t &=& \frac{dq}{dl}
+    
+    \label{}
+\end{eqnarray}
+
+Cramersche Regel $\Rightarrow$
+\begin{equation}
+    r= \frac{\Delta_1}{\Delta_4}, s=\frac{\Delta_2}{\Delta_4}, t=\frac{\Delta_3}{\Delta_4}
+    \label{}
+\end{equation}
+
+mit 
+\[
+    \Delta_1 :=
+    \begin{vmatrix} -E & B & C \\
+        \frac{dp}{dl} & \frac{dy}{dl} & 0 \\
+        \frac{dq}{dl} & \frac{dx}{dl} & \frac{dy}{dl}
+    \end{vmatrix}
+
+    ,\Delta_2 :=
+    \begin{vmatrix} A & -E & C \\
+        \frac{dx}{dl} & \frac{dp}{dl} & 0 \\
+        0 & \frac{dq}{dl} & \frac{dy}{dl}
+    \end{vmatrix}
+
+    ,\Delta_4 :=
+    \begin{vmatrix} A & B & C \\
+        \frac{dx}{dl} & \frac{dy}{dl} & 0 \\
+        0 & \frac{dx}{dl} & \frac{dy}{dl}
+    \end{vmatrix}
+\]
+
+$\to$ Eindeutige Lösung von \ref{1.2.7} $\Leftrightarrow$ $\Delta_4 \neq 0$ (für jeden Punkt auf $\Cc$)
+
+\begin{bemerkung} %1.2.10
+    Existenz und Eindeutigkeit einer Lösung von \ref{1.2.7} hängt \underline{nur} von $\Delta_4$ ab und erhält \underline{weder} Anfangsdaten $\left( \frac{dp}{dl}, \frac{dq}{dl}, p, q \text{ auf } \Cc \right)$ \underline{noch} die rechte Seite $-E$, sondern \underline{nur} Informationen über $A,B,C$ und geometrische Eigenschaften der Kurve.\\
+\end{bemerkung}
+
+Sind nun $u, p(=u_x), (=u_y), r(=u_{xx}), s(=u_{xy}), t(=u_{yy})$ auf $\Cc$ bekannt, differenziere \ref{1.2.1} bzgl. $y$. Wir erhalten dann:
+\[
+    A \underset{=u_{xxy}}{\frac{\partial r}{\partial y}} + B \frac{\partial s}{\partial y} + C \frac{\partial t}{\partial y} + \frac{\partial A}{\partial y} r + \frac{\partial B}{\partial y} s + \frac{\partial C}{\partial y} t = 0
+\]
+
+Mit $\tilde{u} := u_y, \tilde{r} := r_y, \tilde{s}:=s_y, \tilde{t}:=t_y, \tilde{p}:=\tilde{u}_y$ und $\tilde{E} \leftrightarrow E$ bekommt mit dem anderen beiden Gleichungen in \ref{1.2.7} Ausdrücke für $\tilde{r}=\frac{\tilde{\Delta_1}}{\tilde{\Delta_4}}, \tilde{s} = \frac{\tilde{\Delta_2}}{\tilde{\Delta_4}}\cdots$ ebenso für $\tilde{\tilde{u}} = u_x$ $\Rightarrow$ Ableitungen 3.Ordnung etc.
+
+\underline{Insgesamt:} man erhält für $(x,y) \in \Cc$:
+\begin{equation}%1.2.11
+    u\left( x+d_x, y+d_y \right) = u(x,y) + (d_x) \underset{=u_x}{p} + (d_y)\underset{u_y}{q} + \frac{(d_x)^2}{2} \underset{u_{xx}}{r} + \frac{d_x d_y}{2} \underset{u_{xy}}{s} + \frac{(d_y)^2}{2} \underset{=u_{yy}}{t} + \text{ Terme höherer Ordnung}
+    \label{}
+\end{equation}
+
+wobei $d_x, d_y$ klein. 
+
+Falls die Reiehe konvergiert, so ist sie nach Konstruktion eindeutige Lösung von \ref{1.2.1} mit den Cauchy-Daten \ref{1.2.5}.
+
+\begin{satz}[Cauchy-Kowalewskaya]
+    Sind $A,B,C,E$ in einer Umgebung von $\Cc$ reell analytisch (d.h. können in eine Taylorreihe entwickelt werden, und stimmen auf dieser Umgebung punktweise überein), so hat \ref{1.2.1} mit den Cauchy-Daten \ref{1.2.5} in einer Umgebung von $\Cc$ genau dann eine eindeutige Lösung, wenn $\Delta_4 \neq 0$ gilt.
+    
+\end{satz}
+
+Erinnere: Bedingung $\Delta_4 \neq 0$ beinhaltet nur Bedingungen an $A,B,C$ und an die Kurve $\Cc$.\\
+Was ist bei $\Delta_4 = 0$? (Anm. $\Delta_1, \Delta_2, \Delta_3$ müssen auch null sein)
+Um in diesem Fall überhaupt Lösungen für $r=u_{xx}, s=u_{xy}, t=u_{yy}$ zu erhalten, muss $\Delta_1 = \Delta_2 = \Delta_3 = 0$ gelten $\to \Delta_i = 0, i=1,2,3$ sind Kompatibilitätsbedingungen an die Anfangsdaten $p=u_x, q=u_y$. 
+
+Anmerkung: Dabei verliert man allerdings die Eindeutigkeit. Wir gehen zunächst nicht weiter drauf ein.\\
+
+$\Delta_4$ spielt eine besondere Rolle bei der Klassifizierung von PDEs \ref{1.2.2}:\\
+betrachten $\Delta_4 = 0$ und entwickeln nach der 1. Zeile
+
+\begin{eqnarray} %1.2.12
+
+    0 = A \left( \frac{dy}{dl} \right)^2 - B \left( \frac{dx}{dl} \right) \left( \frac{dy}{dl} \right) + C \left( \frac{dx}{dl} \right)^2 &=&: Q\left( \frac{dy}{dl}, \frac{dx}{dl} \right) \quad :\left( \frac{dx}{dl} \right)^2\\
+    \Leftrightarrow A \left( \frac{dy}{dx} \right)^2 - B \left( \frac{dy}{dx} \right) + C &=&  0 \quad \text{unabhängig von Parametrisierung}
+\end{eqnarray}
+
+$\Rightarrow$ charakteristisches Polynom des Hauptteils von PDE. Auch $Q(y,x) = Ay^2-Bxy +Cx^2$
+
+\begin{definition}
+    Kurevn $\Cc$, die die Bedingung \ref{1.2.12} bzgl. der PDE \ref{1.2.1} erfüllen, heißen Charakteristiken. Jede Richtung $\beta = (\beta_1,\beta_2)$, für die $Q(\beta)=0$, heißt charakteristische Richtung.
+\end{definition}
+
+%Bild Kurve
+\underline{Beachte}: $\frac{dy}{dx}$ gibt die Steigung der Tangente an $\Cc$ in jedem Punkt an. Für Charakteristiken sind diese Steigungen Nullstellen des charakteristischen Polynoms. Ist Anfangskurve $\Cc$ charakteristisch, so liegt keine Eindeutigkeit der Lösung vor, da dann $\Delta_4 = 0$\\
+
+Zur Klassifikation der PDE betrachte nun im Hinblick auf \ref{1.2.12} die Nullstellen des charakteristischen Polynoms $Q(z,1) := Az^2 - Bz + C = 0 (\Leftrightarrow \Delta_4 = 0) $
+
+Die PDE \ref{1.2.1} heißt 
+\begin{itemize}
+    \item[hyperbolisch], falls $B^2-4AC > 0$, d.h. $Q(z,1)$ hat zwei verschiedene reelle Wurzeln $\to$, es existieren zwei verschiedene Scharen von Charakteristiken (d.h. zwei verschiedene Tangentensteigungen)
+    \item[parabolisch], falls $B^2-4AC = 0$, d.h. $Q(z,1)$ hat eine doppelte Nullstelle, es existiert eine Schar von Charakteristiken
+    \item[elliptisch], falls $B^2-4AC < 0$, d.h. es existieren keine reellen Nullstellen, also auch keine Charakteristiken.
+\end{itemize}
+
+\begin{beispiel}
+    $-\Delta u =f \Leftrightarrow -(u_{xx} + u_{yy}) = -f$\\
+    $\Rightarrow A=1, B=0, C=1 \Rightarrow -4 < 0 \Rightarrow $ elliptisch\\
+    (Anmerkung: Irgendeine Kurve nehmen, Cauchy Daten darauf definieren. Bei elliptischen Problemen resultiert dies in einer eindeutig Lösung)
+\end{beispiel}
+
+\begin{itemize}
+    \item Falls $Q(z,1)\left( =Az^2-Bz+C \right) = 0$ reelle Lösung hat, so sind die entsprechenden Charakteristiken durch \ref{1.2.13} $\frac{dy}{dx} = \frac{B \underset{+}{-} \sqrt{B^2-4AC}}{2A}$ gegeben.
+\end{itemize}
+
+'Charakteristikenschar': nur Steigung der Charakteristiken gegeben. (Anm. Bei einer hyperbolischen PDE dürfen z.B. keine Cauchy Daten auf den Charakteristiken (siehe Bild) vorgeben werden)
+
+
