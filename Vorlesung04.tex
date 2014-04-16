@@ -1,0 +1,157 @@
+Jeder Kegelschnitt hat die Form 
+\[
+    ax^2 + 2bxy cy^2 + 2dx + 2dy + f = 0\\
+    \delta:= \begin{vmatrix} a & b\\ b & c\end{vmatrix} = ac - b^2\\
+\]
+\begin{itemize}
+    \item[$\delta>0 \Rightarrow$] Ellipse
+    \item[$\delta=0 \Rightarrow$] Parabel
+    \item[$\delta<0 \Rightarrow$] Hyperbel
+\end{itemize}
+
+\begin{bemerkung} %1.2.14
+    \begin{enumerate}
+        \item Falls $A=0, B\neq 0$: \eqref{1.2.12} erhält die Form 
+            \[
+                B\left( \frac{dy}{dx} \right) = C \Leftrightarrow \frac{dy}{dx} = \frac{C}{B} 
+            \]
+        \item Falls $A=0, C=0 \Rightarrow B\neq 0 \rightarrow \frac{dx}{dl}=0$ oder $\frac{dy}{dl}=0$ Charakteristiken parallel zum Koordinatensystem
+    \end{enumerate}
+\end{bemerkung}
+
+\section*{Transformation von \eqref{eq:PDE} auf kanonische Form}
+
+Da die Charakteristiken eine ausgezeichnete Rolle spielen, liegt es nahe, falls möglich (d.h. falls sie existieren), das Koordinatensystem danach auszurichten. (Anm. alte Koordinaten $x,y$: $(u=u(x,y))$)\\
+Dazu: Seien $\xi: \R^2\to\R, \eta: \R^2\to\R$ und betrachte Kurvenscharen
+
+\begin{align*}
+    \Cc_\gamma :&=&  &\left\{ (x,y)\in\R^2: \xi(x,y)=\gamma \right\} \quad \text{(Höhenlinien, Niveaumengen)}\\
+    \Gc_\gamma :&=&  &\left\{ (x,y)\in\R^2: \eta(x,y)=\gamma \right\} 
+\end{align*}
+
+mit 
+\begin{equation} %1.2.15
+    \begin{vmatrix}
+        \xi_x & \xi_y\\
+        \eta_x & \eta_y
+    \end{vmatrix}
+    = 
+    \xi_x\eta_y - \xi_y\eta_x \neq 0 \quad \forall x,y
+    \label{}
+\end{equation}
+
+d.h. $\nabla \xi \begin{pmatrix} \xi_x\\ \xi_y \end{pmatrix}, \nabla\eta$ linear unabhängig.
+
+Wir erhalten zwei linear unabhängige Kurvenscharen, d.h. die Normalen $\nabla \xi, \nabla \eta$ sind linear unabhängig, oder 
+\begin{align*}
+    T:\R^2 &\to\R^2\\
+    (x,y) &\to \left( \xi(x,y), \eta(x,y) \right) \quad \Cc^1-\text{Diffeomorphismus}\\
+\end{align*}
+
+\[
+    \Rightarrow T' = 
+    \begin{pmatrix}
+        \xi_x & \xi_y \\
+        \eta_x & \eta_y
+    \end{pmatrix}
+\]
+mit $det T' \neq 0$.
+
+Transformation von \eqref{eq:PDE}: Sei dazu $\Phi\left( \xi(x,y), \eta(x,y) \right):= u(x,y)$
+
+\begin{align*}
+    \underset{=\frac{\partial u}{\partial x}}{u_x} = \underbrace{\Phi_\xi \xi_x}_{vw} + \Phi_\eta \eta_x\\
+    u_y = \Phi_\xi \xi_y + \Phi_\eta \eta_y\\
+    \Rightarrow u_{xx} = \underbrace{\Phi_{\xi\xi}(\xi_x)^2 + \Phi_{\xi\eta} \xi_x\eta_x}_{v'w} + \Phi_\xi \underbrace{\xi_{xx}}_{vw'}
+    + \Phi_{\eta\xi} \eta_x \xi_x + \Phi_{\eta\eta}(\eta_x)^2 + \Phi_\eta \eta_{xx}\\
+    = \Phi_{\xi\xi} (\xi_x)^2 + \Phi_{\eta\eta}(\eta_x)^2 + 2\Phi_{\xi\eta} \eta_x \xi_x + \Phi_\xi \xi_{xx} + |phi_\eta \eta_{xx}\\
+    u_{xy} = \Phi_{\xi\xi} \xi_x\xi_y + \Phi_{\eta\eta} \eta_y \eta_x + \Phi_{\xi\eta} (\xi_x\eta_y + \xi_y\eta_x) + \Phi_\xi \eta_{xy} + \Phi_\eta \eta_{xy}\\
+    u_{yy} = \Phi_{\xi\xi}(\xi_y)^2 \Phi_{\eta\eta} (\eta_y)^2 + 2\Phi_{\xi\eta} \eta_y\xi_y + \Phi_\xi \xi_{yy} + \Phi_\eta \eta_{yy}
+\end{align*} 
+
+Also erhälit $L$ die Form (Koeffizientenvergleich, Übung)
+
+\begin{equation} %1.2.16
+    L[\Phi] = a \Phi_{\xi\xi} + b\Phi_{\xi\eta} + c \Phi_{\eta\eta} + \left( L[\xi] - E_3\xi \right)\Phi_\xi + \left( L[\eta] - E_3\eta \right) \Phi_\eta + E_3 Phi = F
+    \label{eq:newPDE}
+\end{equation}
+
+mit \eqref{eq:newPDE}
+\begin{align*}
+    a:= A(\xi_x)^2 + B\xi_x\xi_y + C(\xi_y)^2\\
+    b:= 2A\xi_x \eta_x + B(\xi_x\eta_y+\eta_x\xi_y) + 2C\xi_y\eta_y\\
+    c:=A(\eta_x)^2 + B\eta_x\eta_y + C(\eta_y)^2
+\end{align*}
+
+(Anm. Durch die Transformation verlieren wir keine Informationen bzgl. der Klassifizierung)
+Weiter gilt
+\begin{equation}%1.2.17
+    b^2-4ac = (B^2-4AC) = \underbrace{(\xi_x\eta_y-\xi_y\eta_x)^2}_{(det T')^2 > 0 \text{ nach Vor.}}
+    \label{}
+\end{equation}
+d.h. $b^2-4ac$ und $B^2-4AC$ haben dasselbe Vorzeichen, d.h. die Klassifizierung (ellipt., parab., hyperb.) sind unabhängig von Koordinatentransformation \ref(1.2.14 (v))\\
+
+
+
+Transformation der Cauchy-Daten \ref{1.2.5}
+\[
+    u\big|_\Cc = f, \Cc:=\Cc_0 = \left\{ (x,y): \xi(x,y)=0 \right\}
+\]
+$\to$ Daten $\Phi(0,\eta)$ ($\eta$-Achse), $\Phi_\eta(0,\eta), \Phi_{\eta\eta}(0,\eta)$ und $\frac{\partial u}{\partial \nu}\big|_\Cc = g$ (Normalenableitung)\\
+$\Rightarrow \Phi_\xi(0,\eta), \Phi_{\xi\eta}(0,\eta)$ gegebe und weiter mit lokaler Taylorentwicklung wie im allgemeinen Satz von Cauchy-Kowalewskaya. \\
+
+$L[\Phi]$ lässt sich nach $\Phi_{\xi\xi}$ auflösen, 
+\begin{equation}
+    a \underset{\text{Def.}}{=} Q(\xi_x,-\xi_y) \neq 0
+    \label{}
+\end{equation}
+
+\begin{equation} %1.2.19
+    \frac{dy}{dx} = - \frac{\xi_x}{\xi_y}
+\end{equation}
+$Q(\frac{dy}{dx},1) \neq 0$.\\
+
+Damit: \underline{kanonische Formen von \eqref{eq:PDE}}
+\begin{enumerate}[(i)]
+    \item Sei PDE \eqref{eq:PDE} hyperbolisch, d.h. $B^2-AC>0$, also zwei unabhägige Scharen von Charakteristiken. Wähle $\xi, \eta$ so, dass $\Cc_\gamma, \Gc_\gamma$ Charakteristiken sind, d.h.
+        \begin{align*}
+           Q(\xi_x,-\xi_y) = 0 = Q(\eta_x,-\eta_y)
+        \end{align*}
+        \begin{align} %1.2.16
+            A(\xi_x)^2 + B\xi_x\xi_y + C \xi_y^2 = 0 = a\\
+            \Leftrightarrow\\
+            A(\eta_x)^2 + B\eta_x\eta_y + C\eta_y^2 = 0 = c
+            \label{}
+        \end{align}\\
+        $\to$ kanonische Form ist 
+        \begin{equation} %1.2.20
+            b \Phi_{\xi\eta} + e = 0
+            \label{}
+        \end{equation}
+        Andere Wahlmöglichkeit (Courant, Hilbert II Kap III, Par.1, p.124)\\
+            $a=-c, b=0$
+            $\to$ kanonische Form ist 
+            \begin{equation}%1.2.20a
+                a(\Phi_{\xi\xi}-\Phi_{\eta\eta}) + e = 0
+                \label{}
+            \end{equation}
+            (Anm. $u_{tt} = \tilde{c} u_{xx}$ Wellengleichung)
+
+
+        \item Sei PDE parabolisch, d.h. $B^2-4AC = 0$ d.h. eine Schar von Charakteristiken $\to B^2-4AC = 0$, o.B.d.A. $AC\neq 0, A\neq 0 \to$ einzige Lösung von \ref{1.2.13} ist $\frac{dy}{dx} = \frac{B}{2A}$. Eine Schar von Charakteristiken $\Cc_\gamma: Q(\xi_x, -\xi_y)=0=a$. Mit \eqref{1.2.14} ist $b^2-\underset{=0}{4ac} = \underset{=0}{(B^2-4AC)}\underset{>0}{(det T')^2} = 0 \Rightarrow b=0$.\\
+            $\to$ kanonische Form ist
+            \begin{equation} %1.2.21
+                c\Phi_{\eta\eta} + \underset{\text{neues } e}{e} = 0
+                \label{}
+            \end{equation}
+
+
+            \item PDE elliptisch, $B^2-4AC<0$ keien Charakteristiken. Geeignete Koordinatentransformation erlauben es, gemischte Terme zum Verschwinden zu bringen\\
+                $\to$ kanonische Form ist 
+                \begin{equation} %1.2.22
+                    a_1\Phi_{\xi\xi} + a_2 \Phi_{\eta\eta} + e = 0
+                    \label{}
+                \end{equation}
+                mit $a_1,a_2 > 0$
+\end{enumerate}
+
