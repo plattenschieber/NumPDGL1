@@ -17,7 +17,7 @@ $\Cc$ a general curve, given Cauchy data
 
 $\tau, \nu$ linearly independent $\Rightarrow$ computation of $\nabla u = \begin{pmatrix} u_x\\ u_y\end{pmatrix}$ is possible at any point on $\Cc$.
 
-\underline{Frage:} unter welchen Bedingungen legt dies zusammen mit \ref{1.2.1} alle Ableitungen 2. Ordnung 
+\underline{Frage:} unter welchen Bedingungen legt dies zusammen mit \eqref{eq:PDE} alle Ableitungen 2. Ordnung 
 \begin{equation} %(1.2.6)
     r:=u_{xx}, s:=u_{xy}, t:=u_{yy}
     
@@ -32,7 +32,7 @@ Dazu sei $\Cc = \left\{ \left( x(l), y(l) \right): l\in [0,T] \right\}$ natürli
     \underbrace{\frac{dq}{dl}}_{\text{bekannt}} = \frac{\partial q}{\partial x} \frac{dx}{dl} + \frac{\partial q}{\partial y} \frac{dy}{dl}
     = s \frac{dx}{dl} + t\frac{dy}{dl}
 \]
-Außerdem müssen $r,s,t$ die PDE \ref{1.2.1} erfüllen $\to$ lineares Gleichungssystem mit 3 Gleichungen für die 3 Unbekannten $r,s,t:$
+Außerdem müssen $r,s,t$ die PDE \eqref{eq:PDE} erfüllen $\to$ lineares Gleichungssystem mit 3 Gleichungen für die 3 Unbekannten $r,s,t:$
 
 \begin{eqnarray} %(1.2.7)
     A+\cdots + Bs + Ct &=&  -E\\
@@ -72,10 +72,10 @@ mit
 $\to$ Eindeutige Lösung von \ref{1.2.7} $\Leftrightarrow$ $\Delta_4 \neq 0$ (für jeden Punkt auf $\Cc$)
 
 \begin{bemerkung} %1.2.10
-    Existenz und Eindeutigkeit einer Lösung von \ref{1.2.7} hängt \underline{nur} von $\Delta_4$ ab und erhält \underline{weder} Anfangsdaten $\left( \frac{dp}{dl}, \frac{dq}{dl}, p, q \text{ auf } \Cc \right)$ \underline{noch} die rechte Seite $-E$, sondern \underline{nur} Informationen über $A,B,C$ und geometrische Eigenschaften der Kurve.\\
+    Existenz und Eindeutigkeit einer Lösung von \eqref{eq:rst} hängt \underline{nur} von $\Delta_4$ ab und erhält \underline{weder} Anfangsdaten $\left( \frac{dp}{dl}, \frac{dq}{dl}, p, q \text{ auf } \Cc \right)$ \underline{noch} die rechte Seite $-E$, sondern \underline{nur} Informationen über $A,B,C$ und geometrische Eigenschaften der Kurve.\\
 \end{bemerkung}
 
-Sind nun $u, p(=u_x), (=u_y), r(=u_{xx}), s(=u_{xy}), t(=u_{yy})$ auf $\Cc$ bekannt, differenziere \ref{1.2.1} bzgl. $y$. Wir erhalten dann:
+Sind nun $u, p(=u_x), (=u_y), r(=u_{xx}), s(=u_{xy}), t(=u_{yy})$ auf $\Cc$ bekannt, differenziere \eqref{eq:PDE} bzgl. $y$. Wir erhalten dann:
 \[
     A \underset{=u_{xxy}}{\frac{\partial r}{\partial y}} + B \frac{\partial s}{\partial y} + C \frac{\partial t}{\partial y} + \frac{\partial A}{\partial y} r + \frac{\partial B}{\partial y} s + \frac{\partial C}{\partial y} t = 0
 \]
@@ -90,10 +90,10 @@ Mit $\tilde{u} := u_y, \tilde{r} := r_y, \tilde{s}:=s_y, \tilde{t}:=t_y, \tilde{
 
 wobei $d_x, d_y$ klein. 
 
-Falls die Reiehe konvergiert, so ist sie nach Konstruktion eindeutige Lösung von \ref{1.2.1} mit den Cauchy-Daten \ref{1.2.5}.
+Falls die Reiehe konvergiert, so ist sie nach Konstruktion eindeutige Lösung von \eqref{eq:PDE} mit den Cauchy-Daten \ref{1.2.5}.
 
 \begin{satz}[Cauchy-Kowalewskaya]
-    Sind $A,B,C,E$ in einer Umgebung von $\Cc$ reell analytisch (d.h. können in eine Taylorreihe entwickelt werden, und stimmen auf dieser Umgebung punktweise überein), so hat \ref{1.2.1} mit den Cauchy-Daten \ref{1.2.5} in einer Umgebung von $\Cc$ genau dann eine eindeutige Lösung, wenn $\Delta_4 \neq 0$ gilt.
+    Sind $A,B,C,E$ in einer Umgebung von $\Cc$ reell analytisch (d.h. können in eine Taylorreihe entwickelt werden, und stimmen auf dieser Umgebung punktweise überein), so hat \eqref{eq:PDE} mit den Cauchy-Daten \ref{1.2.5} in einer Umgebung von $\Cc$ genau dann eine eindeutige Lösung, wenn $\Delta_4 \neq 0$ gilt.
     
 \end{satz}
 
@@ -110,12 +110,13 @@ betrachten $\Delta_4 = 0$ und entwickeln nach der 1. Zeile
 
     0 = A \left( \frac{dy}{dl} \right)^2 - B \left( \frac{dx}{dl} \right) \left( \frac{dy}{dl} \right) + C \left( \frac{dx}{dl} \right)^2 &=&: Q\left( \frac{dy}{dl}, \frac{dx}{dl} \right) \quad :\left( \frac{dx}{dl} \right)^2\\
     \Leftrightarrow A \left( \frac{dy}{dx} \right)^2 - B \left( \frac{dy}{dx} \right) + C &=&  0 \quad \text{unabhängig von Parametrisierung}
+    \label{eq:Bed}
 \end{eqnarray}
 
 $\Rightarrow$ charakteristisches Polynom des Hauptteils von PDE. Auch $Q(y,x) = Ay^2-Bxy +Cx^2$
 
 \begin{definition}
-    Kurevn $\Cc$, die die Bedingung \ref{1.2.12} bzgl. der PDE \ref{1.2.1} erfüllen, heißen Charakteristiken. Jede Richtung $\beta = (\beta_1,\beta_2)$, für die $Q(\beta)=0$, heißt charakteristische Richtung.
+    Kurevn $\Cc$, die die Bedingung \eqref{eq:Bed} bzgl. der PDE \eqref{eq:PDE} erfüllen, heißen Charakteristiken. Jede Richtung $\beta = (\beta_1,\beta_2)$, für die $Q(\beta)=0$, heißt charakteristische Richtung.
 \end{definition}
 
 %Bild Kurve
@@ -123,7 +124,7 @@ $\Rightarrow$ charakteristisches Polynom des Hauptteils von PDE. Auch $Q(y,x) = 
 
 Zur Klassifikation der PDE betrachte nun im Hinblick auf \ref{1.2.12} die Nullstellen des charakteristischen Polynoms $Q(z,1) := Az^2 - Bz + C = 0 (\Leftrightarrow \Delta_4 = 0) $
 
-Die PDE \ref{1.2.1} heißt 
+Die PDE \eqref{eq:PDE} heißt 
 \begin{itemize}
     \item[hyperbolisch], falls $B^2-4AC > 0$, d.h. $Q(z,1)$ hat zwei verschiedene reelle Wurzeln $\to$, es existieren zwei verschiedene Scharen von Charakteristiken (d.h. zwei verschiedene Tangentensteigungen)
     \item[parabolisch], falls $B^2-4AC = 0$, d.h. $Q(z,1)$ hat eine doppelte Nullstelle, es existiert eine Schar von Charakteristiken
