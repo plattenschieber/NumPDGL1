@@ -32,6 +32,7 @@ Sei $\Omega \subset \R^d$ ein Gebiet (d.h. offen und zusammenhängend), $d\in\N$
      die Gleichung 
      \begin{equation}%(1.1.2)
          G\left(x,t, \frac{\partial^{|\alpha|}u}{\partial x^\alpha}: |\alpha| \leq k, \frac{\partial^i u}{\partial t^i}, 1\leq i\leq l\right) = 0
+         \label{eq:bigG}
      \end{equation}
      erfüllt, heißt klassische Lösung der durch (1.1.2) gegebenen PDE der Ordnung k im Ort und l in der Zeit.
 \end{definition}
@@ -49,10 +50,11 @@ $d+k \choose d$: die Anzahl der Möglichkeiten aller Ableitungen
     \[
         G\left( x_1,x_2,u,\frac{\partial u}{\partial x_1}, \frac{\partial u}{\partial x_2} \right) := a(x) \frac{\partial u}{\partial x_1} + b(x) \frac{ \partial u}{\partial x_2} + c(x) u = 0
     \]
-    Gesucht: $u=u(x_1,x_2), \tilde(u) = \tilde(u)(x_1,x_2,t) = u(x_1,x_2)v(t)$
+    Gesucht: $u=u(x_1,x_2), \tilde u = \tilde u(x_1,x_2,t) = u(x_1,x_2)v(t)$
+    \label{bsp:bigG}
 \end{beispiel}
 
-Beachte: wie bei ODEs benötigt man Nebenbedingungen, um aus Gesamtlösungsschar für (1.1.2) eine spezielle Lösung \underline{eindeutig} auszuwählen.
+Beachte: wie bei ODEs benötigt man Nebenbedingungen, um aus Gesamtlösungsschar für \ref{bsp:bigG}(1.1.2) eine spezielle Lösung \underline{eindeutig} auszuwählen.
 
 \begin{definition}[Problem ``korekt gestellt'']
 \begin{itemize}
