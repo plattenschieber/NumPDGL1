@@ -20,7 +20,6 @@ $\tau, \nu$ linearly independent $\Rightarrow$ computation of $\nabla u = \begin
 \underline{Frage:} unter welchen Bedingungen legt dies zusammen mit \eqref{eq:PDE} alle Ableitungen 2. Ordnung 
 \begin{equation} %(1.2.6)
     r:=u_{xx}, s:=u_{xy}, t:=u_{yy}
-    
     \label{}
 \end{equation}
 Dazu sei $\Cc = \left\{ \left( x(l), y(l) \right): l\in [0,T] \right\}$ natürliche Parametrisierung bezüglich der Bogenlänge L
@@ -38,7 +37,6 @@ Außerdem müssen $r,s,t$ die PDE \eqref{eq:PDE} erfüllen $\to$ lineares Gleich
     A+\cdots + Bs + Ct &=&  -E\\
     \frac{dx}{dl} r + \frac{dy}{dl} s &=& \frac{dp}{dl}\\
     \frac{dx}{dl} s + \frac{dy}{dl} t &=& \frac{dq}{dl}
-    
     \label{}
 \end{eqnarray}
 
@@ -55,13 +53,13 @@ mit
         \frac{dp}{dl} & \frac{dy}{dl} & 0 \\
         \frac{dq}{dl} & \frac{dx}{dl} & \frac{dy}{dl}
     \end{vmatrix}
-
+%
     ,\Delta_2 :=
     \begin{vmatrix} A & -E & C \\
         \frac{dx}{dl} & \frac{dp}{dl} & 0 \\
         0 & \frac{dq}{dl} & \frac{dy}{dl}
     \end{vmatrix}
-
+%
     ,\Delta_4 :=
     \begin{vmatrix} A & B & C \\
         \frac{dx}{dl} & \frac{dy}{dl} & 0 \\
@@ -107,7 +105,6 @@ $\Delta_4$ spielt eine besondere Rolle bei der Klassifizierung von PDEs \ref{1.2
 betrachten $\Delta_4 = 0$ und entwickeln nach der 1. Zeile
 
 \begin{eqnarray} %1.2.12
-
     0 = A \left( \frac{dy}{dl} \right)^2 - B \left( \frac{dx}{dl} \right) \left( \frac{dy}{dl} \right) + C \left( \frac{dx}{dl} \right)^2 &=&: Q\left( \frac{dy}{dl}, \frac{dx}{dl} \right) \quad :\left( \frac{dx}{dl} \right)^2\\
     \Leftrightarrow A \left( \frac{dy}{dx} \right)^2 - B \left( \frac{dy}{dx} \right) + C &=&  0 \quad \text{unabhängig von Parametrisierung}
     \label{eq:Bed}
