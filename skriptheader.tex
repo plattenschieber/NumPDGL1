@@ -154,8 +154,8 @@
 \newtheorem{amsalgo}[amssatz]{Algorithmus}
 \newtheorem*{amsalgo*}{Algorithmus}
 \newtheorem{amskorollar}[amssatz]{Korollar}
-\newtheorem*{bemerkung*}{Bemerkung}
-\newtheorem{bemerkung}[amssatz]{Bemerkung}
+\newtheorem{amsbemerkung}[amssatz]{Bemerkung}
+\newtheorem*{amsbemerkung*}{Bemerkung}
 
 \newenvironment{satz}[1][]{\begin{amssatz}[#1]\begin{shaded}}
                           {\end{shaded}\end{amssatz}}
@@ -175,6 +175,10 @@
                                {\end{framed}\end{amsbsp}}
 \newenvironment{beispiel*}[1][]{\begin{amsbsp*}[#1]}
                                {\end{amsbsp*}}
+\newenvironment{bemerkung}[1][]{\begin{amsbemerkung}[#1]\begin{framed}}
+                               {\end{framed}\end{amsbemerkung}}
+\newenvironment{bemerkung*}[1][]{\begin{amsbemerkung*}[#1]\begin{framed}}
+                               {\end{framed}\end{amsbemerkung*}}
 
 
 
