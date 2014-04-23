@@ -1,0 +1,113 @@
+\section{Klassifizierung quasilinearere PDEs 2.Ordnung im $\R^d$ (vorher: d=2)} %I.3
+Verallgemeinern der Klassifikation mittels Eigenwerten der Koeffizientenmatrix im PDE $\to$ Skript
+
+\section{Einige grundlegende Modellgleichungen} %I.4
+\subsection{Die Poisson-/Laplacegleichung}
+Auf einem Gebiet $\Omega \subset \R^2$  betrachte die PDE 
+\begin{equation} %1.4.1
+    L[u] := -\Delta u = f
+    \label{eq:laplace}
+\end{equation}
+
+, wobei $\Delta:= \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$ Laplace-Operator, gegeben $f=f(x,y)$ auf $\Omega$, gesucht: $u=u(x,y), u: \Omega\to\R$\\
+
+Da \eqref{eq:laplace} bereits in kanonischer Form \eqref{1.2.22} $\Rightarrow$ \eqref{eq:laplace} is elliptisch\\
+
+Physikalischer Hintergrund: stationäre (zeitunabhängige) Probleme, z.B. Elastizität, Statik, stationäre Strömungsproblem
+
+Beispiele:
+\begin{itemize}
+    \item $f \equiv 0: \Delta u= 0$ Potentialgleichung ($\to$ Geodäsie)\\
+        (physikalisch: $u$ ist elektrostatisches Potential eines elektrischen Feldes $E=-\nabla u$)
+    \item Elastizität: $-\Delta u = f$: $u$ beschreibt Auslenkung einer dünnen Membran, auf die durch $f$ ausgeübte Kräfte wikren.
+    \item \eqref{eq:laplace} sind Eulergleichungen zu Variationsaufgaben wie z.B. das Plateauproblem
+\end{itemize}
+
+\begin{beispiel}[Beispiel einer Variationsaufgabe: Das Plateauproblem] %1.4.2
+    (Berühmtes Problem aus Geometrie und Analysis [Minimalflächen]). Gesucht ist eine Fläche  $\Fc\subset\R^3$, die von einer gegebenen Kurve $\Cc$ berandet ist, wobei der Flächeninhalt $\mu(\Fc)$ minimal sein soll, d.h.
+    \[
+        \mu(\Fc) \overset{!}{=} min \text{ und } \partial\Fc = \Cc
+    \]
+    $\Fc$ hinreichend regulär $\to$ Problem ist äquivalent dazu, dass 
+    \[
+        H=0 \text{ auf } \Fc, \quad \partial\Fc=\Cc \quad \text{(mittlere Krümmung der Fläche)}
+    \]
+
+    Literatur: [J.-H. Eschenberg, J. Jost, Differentialgeometrie und Minimalflächen, 2. Aufl. 2007, Springer]\\
+
+    Flächen mit $H=0$ heißen Minimalflächen.\\
+    Speziell: ist $\Fc$ als $u=u(x,y)$ gesucht $\to$ das Minimalflächenproblem lautet für $\Omega\subset\R^2$
+    BILD
+    
+    \begin{equation}%(1.4.2a)
+        \underbrace{\int_{\Omega} \sqrt{1 + u_x^2 + u_y^2} dx dy}_{\text{Flächeninhalt}} \overset{!}{=} min, \quad u=g \text{ auf } \partial\Omega \text{ gegeben}
+        \label{eq:minflach}
+    \end{equation}
+
+    Hinreichend reguläre Situation $\to$ \eqref{eq:minflach} äquivalent zu nichtlinearer PDE
+    \begin{equation} %1.4.2b
+        \left.
+        \begin{aligned}
+            \frac{\partial}{\partial x} \left( \frac{u_x}{\sqrt{1+u_x^2u_y^2}} \right) +  \frac{\partial}{\partial y} \left( \frac{u_y}{\sqrt{1+u_x^2+u_y^2}} \right) &= 0 \quad \text{ in } \Omega\\
+            u &= g \quad { auf } \partial\Omega
+        \end{aligned}
+    \right\}
+        \label{}
+    \end{equation}
+    Euler-Lagrange-Gleichungen zu \eqref{eq:1.4.2a}
+
+    Lagrange[1762]: \eqref{eq:1.4.2b} ist Spezialfall für mehrdimensionale Variationsprobleme. 
+    Plateau[Physiker, 19. Jh.]: Drahtrahmen $\Cc$ in Seifenlösung getaucht und zahlreiche Mathematiker im 19. Jh., Durchbruch erst im 20. Jh. mit modernen Methoden der Variationsrechnung. Exakte Lösung nur in Spezialfällen!
+
+    Vereinfachung von \eqref{eq:1.4.2a} durch Linearisierung mittels Taylorentwicklung für kleine Werte von $u_x,u_y: \sqrt{1+z} = 1 + \frac{z}{2} + O(z^2) \to$ ersetze Integranden in \eqref{eq:1.4.2a} durch quadratischen Ausdruck $\Rightarrow$
+    \begin{equation} %1.4.2c
+        \begin{aligned}
+            J(v) := \frac{1}{2}\int_{\Omega} (v_x^2+v_y^2) dx dy & \overset{!}{=} min\\
+            v & = g \text{ auf } \partial\Omega
+        \end{aligned}
+        \label{eq:1.4.2c}
+    \end{equation}
+    Alternative Darstellung: $\underset{v, v=g \text{ auf } \partial\Omega}{min}$
+    $J:\Cc^1(\Omega) \to \R$ ist ein Funktional.
+
+    [Prinzipien der Variationsrechnung, R. Courant, D. Hilbert, Methoden der math. Physik I, Springer 1993]\\
+
+    Minimierung (d.h. $\delta J(u) = 0$, sprich: 1. Variation von $J$ zu Null setzen) liefert
+    \begin{equation} %1.4.2d
+        \left.
+            \begin{aligned}
+                \Delta u & = 0 \quad \text{ in } \Omega\\
+                u & = g \quad \text{ auf } \partial\Omega
+            \end{aligned}
+        \right\}
+        \label{eq:eulerlagrange}
+    \end{equation}
+    (Euler-Langrange-Gleichung für lineareisierte Plateauprobleme)
+
+    Variationsaufgaben spielen in dieser Vorlesung eine wichtige Rolle, daher Herleitung der PDE \eqref{eq:eulerlagrange} genauer:\\
+
+    Dazu Annahme: es gibt eine Minimalösung $u\in \C^2(\Omega) \cap \C^0(\overline{\Omega})$ von \eqref{eq:1.4.2c} (klassische Lösung). Setze $D(v,w) := \int_{\Omega} (v_xw_x + v_yw_y) dx dy$ und $D(v):= D(v,v)$. Wegen $D$ (bi)linear und symmetrisch..
+    \[
+        D(v + \alpha w) = D(v) + 2\alpha D(v,w) + \alpha^2 D(w,w) \quad \forall v,w \in \Cc^2(\Omega) \cap \Cc^0(\overline{\Omega}) \forall \alpha\in\R
+    \]
+    Sei $v\in\C^1(\Omega)$ mit $v|_{\partial\Omega} = 0$. 
+
+    1. Variation $\partial D(v) := \underset{\alpha\to0}{\lim} \frac{D(v+\alpha w) -D(v)}{\alpha}$
+    J minimieren $\to$ $\delta D(v) = 0 \forall v$. 
+
+    Wegen Annahme ($u$ löst \eqref{1.4.2c}) folgt 
+    \[
+        \partial D(u) = 0 = D(u,v)\\
+        \forall v\in\Cc^1(\Omega) \quad \text{mit } v|_{\partial\Omega} = 0
+    \]
+
+    \[
+        \begin{aligned}
+            0 = D(u,v) & = \int_{\Omega} (u_x v_x + u_yv_y) dx dy\\
+            & \underset{Green, part. Int.}{=} - \int_{\Omega} v(u_{xx} + u_{yy}) dx dy + \underbrace{\int_{\partial\Omega} v(u_x - u_y) ds}_{=0}\\
+            & = - \int_{\Omega} (u_{xx}+u_{yy})v dx dy
+        \end{aligned}
+    \]
+    Das \underline{Test}funktion $v$ beliebig
+    $\Rightarrow u_{xx}+u_{yy} = 0 \text{ in} \Omega \Leftrightarrow \Delta u = 0$ 
+\end{beispiel}
