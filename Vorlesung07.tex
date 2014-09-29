@@ -1,0 +1,129 @@
+\section{Die Wellengleichung (wave equation)} %I.4.3
+Physikalisches Modell: Schwingungsverlauf (oscillating string) einer eingespannten Saite der Länge $l$ von vernachlässigbarer Dicke und eine äußere Kraft $f$, die die Saite zum Schwingen bringt. 
+
+\begin{equation} %1.4.28
+    u_{tt} - c^2u_{xx} = f(x,t) \quad u=u(x,t), c\neq 0
+    \label{}
+\end{equation}
+
+Lösung ist eine Auslenkung (displacement) der Saite an der Stelle $x$ zur Zeit $t$. Vergleich: Diffusionsgleichung, dort: $u_t$ statt $u_{tt}$.\\
+
+Anfangsbedinungen 
+\begin{equation} %1.4.29
+    \label{}
+    \begin{aligned}
+        \left.
+            u(x,0) = g(x)
+            u_t(x,0) = h(x) 
+        \right\} \text{gegeben } x\in(0,l)
+    \end{aligned}
+\end{equation}
+
+Randbedingungen
+\begin{equation} %1.4.30
+    u(0,t) = u(l,t) = 0 \quad \text{Saite eingespannt}
+    \label{}
+\end{equation}
+
+Typ der Gleichung: Charakt. Gleichung \eqref{eq:1.2.12} ist $A(\frac{dt}{dx})^2 -B(\frac{dt}{dx}) + C = 0$
+$A=-c^2, B=0, C=1 \Rightarrow B^2-4AC = 4c^2 > 0 \Rightarrow$  hyperbolisch\\
+
+2 Charakteristikenscharen mit Steigungen gegeben durch 
+\begin{equation}
+    -c^2 (\frac{dt}{dx})^2 + 1 = 0 \Leftrightarrow \frac{dt}{dx} = \underset{+}{-} \frac{1}{c}
+    \label{}
+\end{equation}
+
+Beachte: Anfangsdaten (Cauchy-Daten) \eqref{eq:1.4.29} auf $x$-Achse, und $x$-Achse ist \underline{nicht} charakteristisch, d.h. Problem wohlgestellt. 
+
+
+Transformation auf kanonische Form: (Charakt. $leftrightarrow$ Koordinatensystem) mittels
+\begin{equation} %1.4.32
+    \left\{
+    \begin{aligned}
+        \zeta(x,t) = x-ct\\
+        \eta (x,t) = x+ct
+    \end{aligned}
+\right\} \Rightarrow \frac{\eta-\zeta}{2x} = t, \frac{\zeta+\eta}{2c} = x
+\end{equation}
+
+\[
+    \begin{pmatrix}
+        \zeta_x & \zeta_t\\
+        \eta_x & \eta_t
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        1 & -c\\
+        1 & 0
+    \end{pmatrix}
+    = 2c \neq 0
+\]
+
+Nebenrechung: \[
+    \frac{dt}{dx} = \underset{+}{-} \frac{1}{c}\\
+    \frac{dx}{dt} = \underset{+}{-} c\\
+    \Rightarrow x \underset{+}{-}ct = k
+\]
+
+$\Phi(\zeta,\eta) = \Phi(\zeta(x,t),\eta(x,t)) = u(x,t)$, einsetzen in PDE \eqref{eq:1.4.28} 
+\begin{equation}%1.4.33
+    4c^2\Phi_{\zeta\eta} = \tilde{f} \quad (\text{mit } \tilde{f}\equiv 0 \text{ für } f\equiv 0)
+    \label{}
+\end{equation}
+(Das Produkt zweier unabhängiger Ableitungen)
+
+\underline{Analytisch konstruierte Lösung der Wellengleichung auf $\R$ (mit $f\equiv 0$)}\\
+Betrachte die homogene PDE
+\begin{equation}
+    u_{tt} = c^2u_{xx} \quad \text{auf } \Omega=\R
+    \label{}
+\end{equation}
+mit Cauchy-Daten
+\[
+    u(x,0) = g(x), \quad x\in\Omega\\
+    u_t(x,0)=h(x),\quad x\in\Omega
+\]
+
+Aus \eqref{eq:1.4.33} $\Rightarrow$ alle Lösungen von \eqref{eq:1.4.33} haben die Form $\Phi(\zeta,\eta) = \alpha(\eta) + \beta(\zeta)$, wobei $\alpha(\cdot), \beta(\cdot)$ beliebig (genügend) glatte Funktionen \underline{einer} Veränderlichen $\rightarrow$ Rücktransformation \eqref{eq:1.4.32}
+\begin{equation}
+    \Rightarrow u(x,t) = \alpha(x+ct) + \beta(x-ct)
+    \label{}
+\end{equation}
+
+Finde in \eqref{eq:1.4.35} Funktionen $\alpha,\beta$, so dass die Anfangsbedinungen \eqref{eq:1.4.29} erfüllt sind. Wir erhalten dann mit $t=0$:
+\begin{equation}
+    \tag{(*)}
+    \begin{aligned}
+        u(x,0) \underset{=}{\eqref{eq:1.4.35}} \alpha(x) + \beta(x) &\underset{=}{\eqref{eq:1.4.29}} g(x)\\
+        u_t(x,0) = c\alpha'(x)-x\beta'(x) &= h(x)
+    \end{aligned}
+\end{equation}
+
+Sei $H$ Stammfunktion von $h$, d.h. $H(x) = \int_{0}^{x}h(z) dz + \tilde{x}$. Folgende Wahl von $\alpha$ und $\beta$ lösen dann die Gleichung \eqref{eq:(*)}:
+\[
+    \alpha(x) := \frac{1}{2} g(x) + \frac{1}{2c} H(x)\\
+    \beta(x) := \frac{1}{2} g(x) - \frac{1}{2c} H(x)
+\]
+
+Einsetzen in \eqref{eq:1.4.35} liefert
+
+\begin{equation} %1.4.36
+    \begin{aligned}
+        u(x,t) &= \frac{1}{2} \left( g(x+ct) + g(x-ct) \right) + \frac{1}{2c} \left( H(x+ct)-H(x-ct) \right)\\
+        & = \frac{1}{2} \left( g(x+ct) + g(x-ct) \right) + \frac{1}{2c} \int_{x-ct}^{x+ct} h(z) dz
+    \end{aligned}
+\end{equation}
+
+das Bemerkenswerte dieser Gleichung ist, dass sie \underline{nur} Werte zur Zeit $t=0$, und zwar die Cauchy-Daten $g,h$, ausgewertet an verschobenen Argumenten (d'Alembertsche Formel).
+
+\underline{Interpretation der Lösung}\\
+In der Darstellung \eqref{1.4.36} hängt die Lösung \underline{nur} von den Daten im Interval $[x-ct,x+ct]$ ab. Der \underline{Abhängigkeitsbereich} wird von den beiden Cahrakteristiken durch $(x,t)$ begrenzt.
+[Bild in dem der Abhängigkeitsbereich dargestellt wird]\\
+
+Speziell für $h\equiv 0$ gilt:
+$\Rightarrow$ Lösung ist durch Superposition von zwei Mustern (durch $g$ gegeben), die sich mit \underline{konstanter} Geschwindigkeit auseinanderbewegen.
+
+Vergleich des Wurf eines Steines in einen See. Erst mit voranschreitender Zeit kann man Wellen an einem weiter entfernten Ort sehen (das Dreieck wird für größeres/höheres $t$ größer).
+
+Insgesamt folgt \underline{endliche} Ausbreitungsgeschwindigkeit von Signalen bei der Wellengleichung, die nicht abklingeln (müssen). Insbesondere Störungen in den Anfangsdaten setzen sich mit \underline{konstanter} Geschwindigkeit fort.

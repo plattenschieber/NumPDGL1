@@ -1,0 +1,99 @@
+Zusätzlich zu \eqref{1.4.1} werden Nebenbedingungen benötigt, um die Lösungen eindeutig festzulegen. Wenn die Cauchy Daten auf einer Charakteristik gegeben sind, so lässt sich zumindest über die Taylorentwicklung keine explizite Lösung angeben. 
+
+\eqref{1.4.1} elliptisch $\Rightarrow$ keine Charakteristiken, d.h. man kann Cauchy-Daten $\left( \left\{ u = g \text{ auf } \Cc\\ u_x = g \right. \right)$ auf einer beliebigen Kurve vorschreiben. Demnach kann man anhand eines (berühmten) Beispiels zeigen, dass \eqref{1.4.1} mit Cauchy-Daten nicht ``korrekt gestellt'' ist. 
+
+\begin{beispiel} %1.4.4
+    Das Problem $\Delta u = 0 $ auf $\Omega := {(x,y): x\geq 0}$ mit Cauchy-Daten $\left\{ u(0,y) = 0\\ u_x(0,y) = \frac{1}{M}sin My, \quad M\in\N \right.$ hat als Lösung 
+    \[
+        u(x,y) = \frac{1}{M}(sin My) \underbrace{\sinh Mx}_{\underset{Def.}{=} \frac{e^{Mx}-e^{-Mx}}{2}}
+    \]
+    Beachte für $M\to\infty$ ist $u_x(0,y)\to 0$ (glm. in $y$) \\
+
+    $\Rightarrow$ man erwartet, dass ebenso $u(x,y)\to 0$ für $M\to\infty$\\
+
+    aber $u(x,y) = \underbrace{\frac{1}{M^2}(\sin My)}_{\to 0}\underbrace{(\sinh Mx)}_{\to\infty}$ oszilliert für wachsendes $M$, approximiert aber \underline{nicht} den Grenzwert $0$. Also: die Lösung hängt \underline{nicht} stetig von den Anfangsdaten ab. (Also, selbst wenn es keine Charakteristiken gibt, und man Cauchy-Daten angeben kann, ist in diesem Fall die Eindeutigkeit der Lösung nicht gegeben).
+Stattdessen: Vorgabe von \underline{Randdaten} liefert korrekt gestellte Probleme.
+\end{beispiel}
+
+\underline{Randwertaufgaben} (boundary value problems: bvp)
+
+\begin{equation} %1.4.5
+    \left.  
+    \begin{aligned}
+        -\Delta u & = f \quad \text{in } \Omega\\
+        u\big|_{\partial\Omega} & = g \quad \text{auf } \partial\Omega
+    \end{aligned}
+\right\} Dirichletproblem
+\label{eq:dirichlet}
+\end{equation}
+
+\begin{equation} %1.4.6
+    \left.  
+    \begin{aligned}
+        -\Delta u & = f \quad \text{in } \Omega\\
+        \frac{\partial u}{\partial \nu}\big|_{\partial\Omega} & = g \quad \text{auf } \partial\Omega
+    \end{aligned}
+\right\} Neumann Problem
+\label{eq:neumann}
+\end{equation}
+
+\begin{equation} %1.4.7
+    \left.  
+    \begin{aligned}
+        -\Delta u & = f \\
+        u\big|_{\Gamma_1} & = g_1 \\
+        \frac{\partial u}{\partial \nu}\big|_{\Gamma_2} &= g_2
+    \end{aligned}
+\right\} \text{Gemischtes Problem }\Gamma_1 \cup \Gamma_2 = \partial\Omega, \Gamma_1 \cap \Gamma_2 = \emptyset
+\label{eq:gemischt}
+\end{equation}
+
+
+$\Omega$ Gebiet ist per Definition offen. Damit \eqref{eq:dirichlet}-\eqref{eq:gemischt} sinnvoll gestellt sind, muss man fordern, dass 
+\[
+    u\in \Cc^2(\Omega)\cap\Cc^0(\bar{\Omega})
+\]
+Man braucht nicht $u\in \Cc^2(\bar{\Omega})$.
+
+
+\begin{definition}
+    $u: \Omega\to\R$ heißt \underline{harmonisch} in $\Omega$, falls $u\in\Cc^2(\Omega)\cap\Cc^0(\bar{\Omega})$ ist und $\Delta u \equiv 0 \text{ in } \Omega$. 
+    \underline{Maximumprinzip}: Eine in $\Omega$ harmonische nichtkonstante Funktion nimmt ihr Maximum und Minimum auf dem Rand an. \\
+     Vergleichsprinzip $\Rightarrow$
+    \begin{itemize}
+        \item Eindeutigkeit
+        \item stetige Abhängigkeit von Randdaten
+        \item stetige Abhängigkeit von der rechten Seiten
+    \end{itemize}
+\end{definition}
+
+Existenz \underline{klassischer} Lösungen (d.h. Lösungen $u$ mit $u\in\Cc^2(\Omega)\cap\Cc^0(\bar{\Omega})$ lässt sich häufig für Spezialfälle über Grundlösungen, Greensche Formeln, etc. zeigen. \\
+
+In Kapitel ~\ref{chapterII} zeigen wir Existenz und Eindeutigkeit in geeigneten Rahmen (Variationsaufgaben) in geeigneten Räumen.
+
+\subsection{Die Wärmeleitungsg-/Diffusionsgleichung} %1.4.2
+(Vgl. Aufgabe 4, Zettel 3)\\
+Einfachster Fall: eine Ortsvariable $x\in(0,l)$, Zeit $t\geq 0$. Die Lösung $u(x,t)$ sei die Temperatur eines dünnen Drahtes der Länge $l$ zur Zeit $t$ am Ort $x$. Die Temperaturverteilung wird beschrieben durch 
+\setcounter{equation}{17}
+\begin{equation} %1.4.18!!
+    u_t = a^2 u_{xx} \quad x\in(0,l), t\geq0, a\neq 0 \text{konstant}
+    \label{}
+\end{equation}
+
+Der Typ der PDE lässt sich mittel \eqref{eq:1.2.12} charakterisieren: $A=a^2, B=0=C \Rightarrow$ parabolisch. Eine Schar von Charakteristiken $a^2(\frac{dt}{dx})=0 \Leftrightarrow \frac{dt}{dx} = 0$ einzige Lösung, Kurven parallel zur $x$-Achse.\\
+
+Ein Modell für mögliche Nebenbedingungen auf $\Omega:= \left\{ (x,t): x\in (0,l), t\geq 0 \right\}$
+
+\begin{equation}
+    \begin{aligned}
+        u(x,0) &= g(x) \quad x\in (0,l) \text{ Anfangstemperatur zur Zeit } t=0\\
+            u(0,t) &= h_1(t) \quad t\geq 0\\
+            u(l,t) &= h_2(t) \quad t\geq 0\\
+    \text{Randbedingungen}
+\end{aligned}
+    \label{}
+\end{equation}
+gesucht Temperaturentwicklung $u(x,t)$
+
+Weiteres Beispiel: Finanzmathematik, speziell die Optionsbewertung. Man erhält eine parabolische Differentialgleichung, die Black-Scholes-Gleichung. Etwas zur \underline{Optionspreisbewertung} (Option pricing).\\
+Aktie (stoch.): $S(t)$. Man interessiert sich für Optionen. Dies ist ein abgeleitetes Finanzprodukt (Derivat). Der faire Preis einer Option ist zu bestimmen. Black und Scholes haben eine deterministische PDE ohne stochastisches Modell angegeben. Sie ist parabolisch und eine exakte Lösung konnte explizit (bei europäischen Optionen) angegeben werden. 

@@ -1,0 +1,127 @@
+\begin{definition}
+    $v\in L_2(\Omega)$ possesses a weak derivates $D^{\alpha}v:= \frac{\partial^{|\alpha|}v}{\partial x^\alpha} \inL_2(\Omega), (\Omega\subset\R^d)$ if 
+    \begin{equation}
+        \left( \xi, \frac{\partial^{|\alpha|}v}{\partial x^\alpha} \right)_{L_2(\Omega)} = (-1)^{|\alpha|}\left( \frac{\partial^{|\alpha|}\xi}{\partial x^\alpha},v \right)_{L_2(\Omega)} \forall \text{ test functions} \xi\in \Cc^\infty_0(\Omega)
+        \label{}
+    \end{equation}
+\end{definition}
+
+\begin{beispiel}
+    $v(x)=|x|, \quad x\in [-a,a]$
+\end{beispiel}
+
+Für $k\in\N_0:$
+\[
+    H^k(\Omega) := \left\{ v\in L_2(\Omega): \frac{\partial^{|\alpha|}}{\partial x^\alpha}v \in L_2(\Omega),\quad \forall |\alpha|\leq k \right\}
+\]
+(alle schwachen Ableitungen bis Ordnung $k$ in $L_2(\Omega)$)
+
+\begin{satz}
+    $H^k(\Omega)$ bildet einen Hilbertraum mit dem Skalarprodukt 
+    \[
+        (v,w)_{H^k(\Omega)} := \sum_{|\alpha|\leq k}\left( D^\alpha v, D^\alpha w\right)_{L_2(\Omega)}
+    \]
+
+    der induzierten Sobolevnorm
+    \[
+        \|v\|^2_{H^2(\Omega)} := \sum_{|\alpha|\leq k} \|D^\alpha v\|^2_{L_2(\Omega)}
+    \]
+    und Halbnorm
+    \[
+        |v|^2_{H^k(\Omega)} := \sum_{|\alpha|=k} \|D^\alpha v\|^2_{L_2(\Omega)}
+    \]
+    (Halbnorm, da $|v|_{H^k(\Omega)}=0 \Rightarrow v\equiv$, z.B. $v\equiv konst. \neq 0$)
+\end{satz}
+
+Mit Hilfe der Fouriertransformation lassen sich auch Sobolevräume $H^s$ für $s\in\R_+$ definieren ($H^{1/2},\cdots$ auf $\R^d$; ebenfalls über Waveletcharakterisierungen $\to$ nächstes Semester)
+
+\begin{beispiel}
+    Die charakteristische Funktion der B-Splines $N_1$ liegt im Soboleraum $H^s([0,1])$ für $0\leq s<\frac{1}{2}$. Die Hutfunktionen $N_2$ liegen ebenfalls in $H^s([0,2])$ für jedes $0\leq < \frac{3}{2}$.
+\end{beispiel}
+
+\begin{lemma}[Lemma von Sobolev (Einbettungssatz)] %2.2.1
+    Es gilt $H^s(\Omega) \subset \Cc^k(\Omega)$ für $k\in\N_0, \quad s> k + \frac{d}{2}$.
+    \label{}
+\end{lemma}
+
+\begin{definition}
+    Mit $H^k_0(\Omega)$ bezeichnet man die Vervollständigung von $C^\infty_0(\Omega)$ bzgl. der $\|\cdot\|_{H^k(\Omega)}$ Norm, oder $\bar{\Cc^\infty_0(\Omega)}^{H^k(\Omega)} = H^k_0(\Omega)$.
+    Vervollständigung heißt: Sei $(v_n)_{n\in\N} \in\Cc^\infty_0(\Omega)$ beliebige Cauchy-Folge $\Rightarrow$ für $v$ mit 
+    \[
+        \lim_{n\to\infty} \|v_n-v\|_{H^k(\Omega)} = 0
+    \]
+    ist $v\in \bar{C^\infty_0(\Omega)}^{H^k(\Omega)}$.
+
+    Speziell:
+    \[
+        H^1_0(\Omega) = \left\{ v\in H^1(\Omega) : v|_{\partial\Omega} = 0 \right\}
+    \]
+    (entsprechend für $H^i_0$ verschwinden die $i$-ten Ableitungen am Rand)
+\end{definition}
+
+Für elliptische PDE ein ausgesprochen nützliches Hilfsmittel:
+\begin{satz}[Poincare-Friedrichs-Ungleichung] %2.2.2
+    Für $\Omega\subset\R^d$ offen und beschränkt gilt 
+    \[
+        \|v\|_{L_2(\Omega)} \leq c |v|_{H^1(\Omega)} \quad \forall v\in H^1_0(\Omega)
+    \]
+    (Die Funktionswerte lassen sich durch die ersten Ableitungen abschätzen - aber auch nur, wenn die Funktionen am Rand verschwinden - trivialerweise gilt: $\|v\|_{L_2(\Omega)}\leq \|v\|_{H^2(\Omega)}$)
+\end{satz}
+
+\begin{beweis}
+    Nach Definition ist $\Cc^\infty_0(\Omega)$ dicht in $H^1_0(\Omega)$, braucht die Ungleichung nur für $v\in\Cc^\infty_0(\Omega)$ gezeigt werden.
+    Betrachte speziell den Fall $d=1:$ Sei $\Omega = (a,b)\subset \R$. Sei $v=0$ auf $\R\without \Omega$ ($\Rightarrow v=0$ auf $\partial\Omega$). Dann gilt für $x\in\Omega$:
+    \[
+        |v(x)|^2 \underset{0-Addition}{&=} |v(x)-v(a)|^2 = \left| \int_{a}^{x} (1) v'(t) dt^2 \right|\\
+        \underset{\text{Hölder}}{&\leq} \|1\|_{L_2(a,x)} \int_{a}^{x} (v'(t))^2 dt\\
+        &\leq (b-a) \underbrace{\int_{a}^{b} (v'(t))^2dt}_{=|v|^2_{H^1(\Omega)}}
+        \intertext{Integration beider Seiten bzgl. $x$}
+        \Rightarrow \|v\|^2_{L_2(a,b)} \underset{Def.}{=} \int_{a}^{b} |v(x)|^2 dx\\
+        \underset{vorherige\\Abschätzung}{\leq} \int_{a}^{b} dx (b-a) |v|^2_{H^1(\Omega)}\\
+        = (b-a)^2 |v|^2_{H^1(\Omega)}
+    \]
+    Für Raumdimension $d>1$ integeriere über restliche Koordinaten.
+\end{beweis}
+
+
+\begin{bemerkung}
+    Die Poincare-Friedrichs-Ungleichung gilt auch noch für Funktionen $v\in H^1_\gamma(\Omega):=\left\{ v\in H^1(\Omega): v|_\gamma = 0, \gamma\subet \partial\Omega, \nu_{d-1}(\gamma)>0 \right\}$
+\end{bemerkung}
+
+\begin{korollar}
+    \[
+        \|v\|_{H^k(\Omega)} \tilde |v|_{H^k(\Omega)}
+    \]
+    für alle $v\in H^k_0(\Omega), k\in\N$,  (Sobolevnorm und Halbnorm sind äquivalent auf $H^k_0(\Omega)$)
+\end{korollar}
+
+\begin{definition}
+    Zwei Normane $\|\cdot\|_1, \|\cdot\|_2$ auf Vektorraum $V$ heißen äquivalent, $\|\cdot\|_1 \tilde \|\cdot\|_2$, falls es Konstanten $0<c_1 \leq c_2 < \infty$ unabhängig von $v$ gibt mit 
+    \[
+        c_1\|v\|_1 \leq \|v\|_2 \leq c_2 \|v\|_1 \quad \forall v\in V.
+    \]
+
+    Gilt nur $\|v\|_2 \leq c \|v\|_1$, so schreiben wir $\|v\|_2 \lessym \|v\|_1$
+\end{definition}
+
+\begin{definition}
+    $X,Y$ seien Banachräume mit $X\subset Y$ mit $\|\cdot\|_X, \|\cdot\|Y$. Gilt $\|\x\|_Y \lessym \|x\|_X \quad \forall x\in X$, so heißt $X$ \underline{stetig} in $Y$ \underline{eingegebettet}, ``$X\hookrightarrow Y$''. Wenn zusätzlich $X$ dicht in $Y$, dann heißt es $X$ stetig und dicht in $Y$ eingebettet. 
+
+\end{definition}
+
+\begin{beispiel}
+    Es gilt $H^k(\Omega) \hookrightarrow L_2(\Omega), H^k_0(\Omega) \hookrightarrow L_2(\Omega)$ ($H^0(\Omega) = L_2(\Omega) = H^0_0(\Omega)$)
+\end{beispiel}
+Nach Definition ist $H^k(\Omega) \subset \L_2(\Omega), v\in H^k(\Omega): \|v\|_{L_2(\Omega)} \lessym \|v\|_{H^k(\Omega)}$
+
+\begin{definition} %2.2.3
+    Sei $X$ ein normierter Raum mit $\|\cdot\|_X$ über $\R$. Sei $z: X\to\R$ eine beschränkte (=stetige) lineare Abbildung (auch lineares stetiges Funktionalt genannt), d.h. es gilt für die Operatornorm 
+    \[
+        \|z\|_{X\to\R} := \sub_{v\in X} \frac{|z(v)}{\|v\|_X} < \underbrace{\infty}_{``=beschränkt,stetig''}
+    \]
+    Der Dualraum $X'$ von $X$ ist die Menge \underline{aller} beschränkten Funktionale auf $X$. 
+    Die Dualnorm ist obige Operatornorm, abgekürzt als 
+    \[
+        \|z\|_{X'} := \sup_{v\in X} \frac{|z(v)}{\|v\|_X} =: \sup_{v\in X} \frac{|<z,v>|}{\|v\|_X}
+    \]<++>
+\end{definition}<++>
